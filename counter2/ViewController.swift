@@ -22,8 +22,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         minusButton.backgroundColor = UIColor.blue
         
-        // Do any additional setup after loading the view.
-        
     }
 
     @IBAction func tappedButton(_ sender: Any) {
@@ -34,7 +32,7 @@ class ViewController: UIViewController {
         dateFormatter.dateFormat = "dd.mm.yyyy HH:mm:ss"
         let currentDate = dateFormatter.string(from: Date())
         
-        statInfo.text += "[\(currentDate)]: Значение изменено на +1"
+        statInfo.text += "\n[\(currentDate)]: Значение изменено на +1"
     }
     
     @IBAction func minusButton(_ sender: Any) {
@@ -45,7 +43,7 @@ class ViewController: UIViewController {
         dateFormatter.dateFormat = "dd.mm.yyyy HH:mm:ss"
         let currentDate = dateFormatter.string(from: Date())
         
-        statInfo.text += "[\(currentDate)]: Значение изменено на -1"
+        statInfo.text += "\n[\(currentDate)]: Значение изменено на -1"
         
         
         if numbersOfTaps < 0 {
@@ -56,7 +54,9 @@ class ViewController: UIViewController {
             dateFormatter.dateFormat = "dd.mm.yyyy HH:mm:ss"
             let currentDate = dateFormatter.string(from: Date())
 
-            statInfo.text += "[\(currentDate)]: попытка уменьшить значение счётчика ниже 0"
+            statInfo.text += "\n[\(currentDate)]: попытка уменьшить значение счётчика ниже 0"
+        } else {
+            statInfo.text += "\n[\(currentDate)]: Значение изменено на -1"
         }
     }
     
@@ -64,9 +64,23 @@ class ViewController: UIViewController {
         if numbersOfTaps > 0 {
             numbersOfTaps = 0
             numberOfTapsLabel.text = "Колличество нажатий: 0"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.mm.yyyy HH:mm:ss"
+            let currentDate = dateFormatter.string(from: Date())
+            
+            statInfo.text += "\n[\(currentDate)]:Значение сброшено"
+            
         } else if numbersOfTaps < 0 {
             numbersOfTaps = 0
             numberOfTapsLabel.text = "Количество нажатий: 0"
+            
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.mm.yyyy HH:mm:ss"
+            let currentDate = dateFormatter.string(from: Date())
+            
+            statInfo.text += "\n[\(currentDate)]:Значение сброшено"
         }
     }
     
